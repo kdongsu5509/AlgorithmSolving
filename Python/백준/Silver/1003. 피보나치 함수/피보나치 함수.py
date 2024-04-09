@@ -9,6 +9,7 @@ for time in range(t):
 s = max(user_in)
 
 ## let's set a dynamic programming array.
+# i set the dp array size is bigger than 40. Because to aovid IndexError of this code.
 dp = [[0,0] for _ in range(45)]
 dp[2][0] = 1
 dp[2][1] = 1
