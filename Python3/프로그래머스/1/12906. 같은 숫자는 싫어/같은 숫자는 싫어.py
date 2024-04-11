@@ -1,11 +1,7 @@
-def solution(arr):
-    answer = []
-    stack = []
-    for element in arr:
-        if not stack or stack[-1] != element:
-            answer.append(element)
-            stack.append(element)
-        else:
-            stack.append(element)
-    # print('Hello Python')
-    return answer
+def solution(s):
+    # 함수를 완성하세요
+    result = []
+    for i in s:
+        if not result or result[-1] != i:
+            result.append(i)
+    return result
