@@ -18,11 +18,14 @@ public class Main {
         List<Long> candidatesNumbers = new ArrayList<>();
         Long candiatesSum = Long.MAX_VALUE;
         while (left < right) {
-            Long tempL = numbers.get(left);
-            Long tempR = numbers.get(right);
-            Long temp = tempL + tempR;
+            long tempL = numbers.get(left);
+            long tempR = numbers.get(right);
+            long temp = tempL + tempR;
 
-            if (temp <= 0) {
+            if (temp == 0) {
+                addTocandidatesNumbers(candidatesNumbers, tempL, tempR);
+                break;
+            } else if (temp < 0) {
                 left++;
             } else {
                 right--;
@@ -30,7 +33,6 @@ public class Main {
 
             if (Math.abs(temp) <= Math.abs(candiatesSum)) {
                 candiatesSum = temp;
-                candidatesNumbers.clear();
                 addTocandidatesNumbers(candidatesNumbers, tempL, tempR);
             }
 
@@ -42,6 +44,7 @@ public class Main {
     }
 
     private static void addTocandidatesNumbers(List<Long> candidatesNumbers, Long tempL, Long tempR) {
+        candidatesNumbers.clear();
         candidatesNumbers.add(tempL);
         candidatesNumbers.add(tempR);
     }
