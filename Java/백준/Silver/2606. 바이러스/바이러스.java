@@ -21,12 +21,13 @@ public class Main {
         graph.BFS(0);
 
         int effectedCnt = 0;
-        for (int i = 1; i < computerCnt; i++) {
+        for (int i = 0; i < computerCnt; i++) {
             if (graph.visited[i]) {
                 effectedCnt += 1;
             }
         }
 
+        effectedCnt = (effectedCnt <= 0) ? 0 : effectedCnt - 1;
         System.out.println(effectedCnt);
     }
 }
