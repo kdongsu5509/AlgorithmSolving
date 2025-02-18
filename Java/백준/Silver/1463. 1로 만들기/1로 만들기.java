@@ -1,28 +1,29 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int[] dp = new int[N + 1];
+        int x = sc.nextInt();
 
-        dp[1] = 0; // 1은 0번의 연산으로 1이 됨
+        // DP 배열 초기화 (ArrayList 대신 Array 사용)
+        int[] dp = new int[x + 1];
+        dp[1] = 0; // 1은 0번 연산으로 1이 됨
 
-        for (int i = 2; i <= N; i++) {
-            // 기본 연산: 1을 뺌
-            dp[i] = dp[i - 1] + 1;
-            
-            // 2로 나누어지는 경우
-            if (i % 2 == 0) {
-                dp[i] = Math.min(dp[i], dp[i / 2] + 1);
+        for (int idx = 2; idx <= x; idx++) {
+            // 기본적으로 -1 연산
+            dp[idx] = dp[idx - 1] + 1;
+
+            // 2로 나눌 수 있을 때 최소 연산 횟수 갱신
+            if (idx % 2 == 0) {
+                dp[idx] = Math.min(dp[idx], dp[idx / 2] + 1);
             }
-            
-            // 3으로 나누어지는 경우
-            if (i % 3 == 0) {
-                dp[i] = Math.min(dp[i], dp[i / 3] + 1);
+
+            // 3으로 나눌 수 있을 때 최소 연산 횟수 갱신
+            if (idx % 3 == 0) {
+                dp[idx] = Math.min(dp[idx], dp[idx / 3] + 1);
             }
         }
 
-        System.out.println(dp[N]);
+        System.out.println(dp[x]);  // 결과 출력
     }
 }
